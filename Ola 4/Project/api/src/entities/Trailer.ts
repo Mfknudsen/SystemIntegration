@@ -1,4 +1,4 @@
-enum TrailerStatus{
+export enum TrailerStatus{
     Booked,
     Free
 }

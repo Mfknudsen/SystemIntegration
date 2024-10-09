@@ -1,81 +1,63 @@
 import {AppDataSource} from '../ormconfig';
-import {Task} from '../entities/Task';
-import {ObjectId} from "mongodb";
-import {checkAddTaskBoundary} from './logicChecks';
+import {Location} from "../entities/Location";
+import {Trailer, TrailerStatus} from "../entities/Trailer";
+import {Booking} from "../entities/Booking";
 
-const taskRepository = AppDataSource.getMongoRepository(Task);
+const locationRepository = AppDataSource.getMongoRepository(Location);
+const trailerRepository = AppDataSource.getMongoRepository(Trailer);
+const bookingRepository = AppDataSource.getMongoRepository(Booking);
 
-async function createTask(
-    text: string,
-    description: string,
-    deadline: string | undefined | null,
-    isCompleted: boolean | undefined
-) {
+async function getLocations() {
+    const locations = locationRepository.find();
+    console.log("Found locations", locations)
+    return locations;
+}
 
-    checkAddTaskBoundary(text, description, deadline, isCompleted);
+async function getTrailersByLocationID(locationID: number) {
+    const filter = {locationID: locationID}
+    const trailers = trailerRepository.findBy(filter);
+    console.log("Found trailers", trailers);
+    return trailers;
+}
 
-    const newTask = taskRepository.create({
-        text: text,
-        description: description,
-        deadline: deadline,
-        isCompleted: isCompleted,
+async function createBooking(trailerID: number, insurance: boolean) {
+    const newBooking = bookingRepository.create({
+        trailerID: trailerID,
+        startTime: new Date(),
+        insurance: insurance
     });
 
-    const task = await taskRepository.save(newTask);
-    console.log("Task has been saved:", newTask); // eslint-disable-line no-console
+    const task = bookingRepository.save(newBooking)
+    console.log("Booking has been saved", newBooking)
+
+    await updateTrailerStatus(trailerID, TrailerStatus.Booked)
+
     return task;
 }
 
+async function updateTrailerStatus(trailerID: number, trailerStatus: TrailerStatus) {
+    const filter = {id: trailerID}
+    const update = {
+        $set: {
+            trailerStatus: trailerStatus
+        }
+    }
 
-async function getAllTasks() {
-  const tasks = await taskRepository.find();
-  console.log("Found tasks:", tasks); // eslint-disable-line no-console
-  return tasks;
+    return trailerRepository.updateOne(filter, update);
 }
 
-async function editTask(id: string | undefined, _task: Task) {
-    const objectId = new ObjectId(id);
-    const task = await taskRepository.findOne({where: {_id: objectId}});
-    if (!task) {
-        throw new Error('Task not found');
-    } else {
-        task.text = _task.text;
-        task.description = _task.description;
-        task.category = _task.category;
-        task.deadline = _task.deadline;
-        task.isCompleted = _task.isCompleted;
-        await taskRepository.save(task);
-        console.log("Task has been updated:", task);// eslint-disable-line no-console
-        return task;
+async function returnTrailer(bookingID: number) {
+    const filter = {id: bookingID}
+    const task = bookingRepository.findOneBy(filter);
+    console.log("Found booking", task)
+
+    await updateTrailerStatus((await task)?.trailerID, TrailerStatus.Free)
+
+    const update = {
+        $set: {
+            endDate: new Date()
+        }
     }
 }
 
-async function deleteTask(id: string) {
-    const objectId = new ObjectId(id);
-
-    const task = await taskRepository.findOne({where: {_id: objectId}});
-
-  if (!task) {
-    throw new Error("Task not found");
-  } else {
-    await taskRepository.remove(task);
-    console.log("Task has been deleted:", task); // eslint-disable-line no-console
-    return task;
-  }
-}
-
-async function changeCompleteStateTask(id: string, isCompleted: boolean) {
-    const objectId = new ObjectId(id);
-
-  const task = await taskRepository.findOne({ where: { _id: objectId } });
-  if (!task) {
-    throw new Error("Task not found");
-  } else {
-    task.isCompleted = isCompleted;
-    await taskRepository.save(task);
-    console.log("Complete state has been updated:", task); // eslint-disable-line no-console
-    return task;
-  }
-}
-
-export {createTask, getAllTasks, deleteTask, editTask, changeCompleteStateTask, taskRepository};
+export {getLocations, getTrailersByLocationID, returnTrailer, createBooking}
