@@ -11,11 +11,11 @@ function handleGoogleLogin(): ReactNode
 }
 
 function handleSuccess(){
-
+    console.log("Success")
 }
 
 function handleError(){
-
+    console.log("Error")
 }
 
 export {handleGoogleLogin}
