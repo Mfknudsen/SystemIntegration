@@ -14,18 +14,19 @@ export type PaymentDetails = {
 
 export type Booking = {
   bookingId: string;
-  trailerId: string;
+  trailer: Trailer;
   startTime: Date;
   endTime: Date;
   insurance: Insurance | null;
-  lateFee: boolean;
+  lateFee: number;
+
 };
 
 export type Insurance = {
   insuranceId: string;
   fee: number;
   coverageDetails: string;
-  endTime: Date;
+  endTime: string;
 };
 
 export type Trailer = {
@@ -48,14 +49,6 @@ export type Address = {
   addressId: string;
   street: string;
   number: number;
-  postalCode: number;
+  postalCode: string;
   city: string;
 };
-
-/* eslint-disable no-unused-vars */
-export enum TASK_CATEGORIES {
-  NONE = 0,
-  WORK = 1,
-  CHORES = 2,
-  LEISURE = 3
-}

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0b519560-cfd6-4342-bca6-91f1e7f61ec4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Project/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/.idea/api.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/clover.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/coverage-final.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/block-navigation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/sort-arrow-sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/sorter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/src/db_functions/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/src/db_functions/taskRepository.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/src/entities/Task.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/src/entities/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/src/index.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov-report/src/ormconfig.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/coverage/lcov.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/db_functions/logicChecks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/db_functions/taskRepository.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/entities/Task.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/ormconfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/tests/addintegration.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/tests/api.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/tests/api_integration.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/tests/boundaryEquivalence.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/tests/edit.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/dist/tests/editintegration.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/eslint-report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/jest.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/load-test.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/nodemon.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/report.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/reports/mutation/mutation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/config.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/db_functions/taskRepository.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/entities/Address.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/entities/Booking.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/entities/Customer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/entities/Insurance.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/entities/Location.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/entities/PaymentDetails.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/entities/Trailer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/src/ormconfig.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/stryker.config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/api/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/cypress.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/cypress/e2e/createTask.cy.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/cypress/fixtures/example.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/cypress/support/commands.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/cypress/support/e2e.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Project/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Project/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Project/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Project/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/api/apiFunctions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Project/client/src/types/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/utils/addTask.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/utils/completedTask.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/utils/deleteTask.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/src/utils/editTask.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/Project/client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Project/package-lock.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2nQFduHOmrxtMuAGS5EF0i82sbK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\krist\\Programming\\SystemIntegration\\Ola 4\\Project\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b519560-cfd6-4342-bca6-91f1e7f61ec4" name="Changes" comment="" />
+      <created>1728897483147</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728897483147</updated>
+      <workItem from="1728897484363" duration="1666000" />
+      <workItem from="1728900704753" duration="48000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
