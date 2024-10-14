@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { editTaskAPI, getAllTasksAPI } from "./api/tasks";
+import { getAllLocationsAPI } from "./api/apiFunctions";
 import { Task } from "./types/tasks";
 import { deleteTask } from "./utils/deleteTask";
 import { completedTask } from "./utils/completedTask";
@@ -106,6 +106,7 @@ const App = () => {
       console.error("Error deleting task:", error);
     }
   }
+  
   const handleTabChange = (category: number) => {
     setSelectedCategory(category);
   };
