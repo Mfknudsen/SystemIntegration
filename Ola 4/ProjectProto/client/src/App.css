@@ -6,17 +6,7 @@
   /* background-image: url("https://i.pinimg.com/originals/48/59/b4/4859b40862f4022e450ffa363b60b9eb.gif"); */
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .container {
-  width: 50%; /* Make sure header takes full width */
   padding: 20px; /* Space around the button */
   border: 1px solid;
 }
@@ -52,15 +42,6 @@
   padding: 30px;
 }
 
-.input-field {
-  margin-right: 20px;
-  padding: 10px;
-}
-
-.tabs {
-  margin-bottom: 20px; /* Space below the tabs */
-}
-
 .tabs button {
   margin: 0 10px; /* Horizontal margin between buttons */
   padding: 10px 20px; /* Adjust padding if needed */
@@ -72,12 +53,4 @@
 
 .tabs button:hover {
   background-color: #ddd; /* Background color on hover */
-}
-
-select {
-  padding: 2px 2px;
-  font-size: 14px;
-  border: 2px solid #000000;
-  border-radius: 4px;
-  cursor: pointer;
 }
