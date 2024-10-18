@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Customer, PaymentDetails, Booking } from "./types/types";
 import "./App.css";
+import { StripeAdapter} from "./utils/StripeAdapter";
 
 const App = () => {
   const [booking, setBooking] = useState<Booking[]>([
@@ -14,6 +15,11 @@ const App = () => {
   const [incoming, setIncoming] = useState<boolean>(true);
   const [warehouseNumber, setWarehouseNumber] = useState<number>(1);
 
+  const stripeAdapter = new StripeAdapter("key");
+  const initializePayment = async () => {
+    const paymentMethod = await stripeAdapter.addTestCard("cus_1234567890abcdef.");
+    await stripeAdapter.pay(1000, "usd", paymentMethod.id);
+  };
   async function handleCompleteBooking(id: string | undefined): Promise<void> {
     if (!id) return; // Check if id is valid
     try {
@@ -39,9 +45,10 @@ const App = () => {
 
 
   console.log("customer", customer);
-  
+
+
   useEffect(() => {
-    // fetchData();
+    initializePayment();
   }, []);
 
    const handleToggle = () => {
@@ -111,6 +118,11 @@ const App = () => {
         </tbody>
       </table>
     </div>
+
+    <head>
+      <title>Checkout</title>
+      <script src="https://js.stripe.com/v3/"></script>
+    </head>
   </div>
 
   );
