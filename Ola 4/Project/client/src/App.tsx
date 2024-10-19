@@ -3,6 +3,7 @@ import {Customer, PaymentDetails, Booking} from "./types/types";
 import "./App.css";
 
 import {handleLogin} from "./UserAuthService/UserAdapter";
+import {StripeAdapter} from "./utils/StripeAdapter";
 
 const App = () => {
     const [booking, setBooking] = useState<Booking[]>([
@@ -35,9 +36,12 @@ const App = () => {
         customerId: "47", name: "bob", email: "bob@gmail.com", phoneNumber:
             53352415, paymentDetails: {paymentId: "53", paymentMethod: "cattle-trade", cardNumber: 57839472}
     });
-    const [chemicalsAmount, setChemicalsAmount] = useState<number>(0);
-    const [incoming, setIncoming] = useState<boolean>(true);
-    const [warehouseNumber, setWarehouseNumber] = useState<number>(1);
+
+    const stripeAdapter = new StripeAdapter("key");
+    const initializePayment = async (price: number, customerId: string) => {
+        const paymentMethod = await stripeAdapter.addTestCard(customer,setCustomer);
+        await stripeAdapter.pay(price, "usd", paymentMethod.id, customer.customerId);
+    };
 
     async function handleCompleteBooking(id: string | undefined): Promise<void> {
         if (!id) return; // Check if id is valid
@@ -69,9 +73,6 @@ const App = () => {
         // fetchData();
     }, []);
 
-    const handleToggle = () => {
-        setIncoming(!incoming);
-    };
 
     return (
         <div className="App">
@@ -108,6 +109,7 @@ const App = () => {
                         <th className="table-cell table-cell-header">Insurance fee</th>
                         <th className="table-cell table-cell-header">Late fee</th>
                         <th className="table-cell table-cell-header"></th>
+                        <th className="table-cell table-cell-header">Pay</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -117,6 +119,7 @@ const App = () => {
                             <td className="table-cell">{booking.endTime.toDateString()}</td>
                             <td className="table-cell">{booking.insurance?.fee || "-"}</td>
                             <td className="table-cell">
+
                 <span
                     role="img"
                     aria-label={booking.lateFee ? "Fee" : "No fee"}
@@ -142,6 +145,13 @@ const App = () => {
   {booking.trailer.status === "completed" ? "✅" : "❌"}
 </span>
 
+                            </td>
+                            <td className="table-cell">
+                                {booking.trailer.status === "completed" ? (
+                                    <button onClick={() => initializePayment(booking.lateFee, customer.customerId)}>Pay</button>
+                                ) : (
+                                    "❌"
+                                )}
                             </td>
                         </tr>
                     ))}
