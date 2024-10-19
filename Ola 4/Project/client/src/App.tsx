@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
+import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {Customer, PaymentDetails, Booking} from "./types/types";
 import "./App.css";
 
-import {handleLogin} from "./UserAuthService/UserAdapter";
+import {HandleLogin} from "./UserAuthService/UserAdapter";
 
 const App = () => {
     const [booking, setBooking] = useState<Booking[]>([
@@ -32,8 +32,11 @@ const App = () => {
         }
     ]);
     const [customer, setCustomer] = useState<Customer>({
-        customerId: "47", name: "bob", email: "bob@gmail.com", phoneNumber:
-            53352415, paymentDetails: {paymentId: "53", paymentMethod: "cattle-trade", cardNumber: 57839472}
+        customerId: "-1",
+        name: "",
+        email: "",
+        phoneNumber: 0o0000000,
+        paymentDetails: {paymentId: "-1", paymentMethod: "", cardNumber: 0o0000000}
     });
     const [chemicalsAmount, setChemicalsAmount] = useState<number>(0);
     const [incoming, setIncoming] = useState<boolean>(true);
@@ -77,7 +80,7 @@ const App = () => {
         <div className="App">
             <div className="table-container">
                 <div className="login">
-                    {handleLogin()}
+                    {HandleLogin(setCustomer)}
                 </div>
 
                 <div style={{
@@ -152,5 +155,4 @@ const App = () => {
 
     );
 };
-
 export default App;
