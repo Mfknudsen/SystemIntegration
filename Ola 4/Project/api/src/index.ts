@@ -1,6 +1,6 @@
     import express, { Request, Response } from "express";
     import { AppDataSource } from "./ormconfig";
-    import { createBooking, getAllBookings, updateTrailer } from "./db_functions/bookingRepository";
+    import { createBooking, getAllBookings } from "./db_functions/bookingRepository";
     import cors from "cors";
 import { Booking } from "./entities/entities";
 import { ObjectId } from "mongodb";
@@ -32,8 +32,8 @@ import { ObjectId } from "mongodb";
 
             app.post("/bookings", async (req: Request, res: Response) => {
                 try {
-                    const {trailer, startTime} = req.body;
-                    const booking = await createBooking(trailer, startTime);
+                    const {trailerId, insurance, } = req.body;
+                    const booking = await createBooking(trailerId, insurance);
                     
                     res.json(booking);
                 } catch (error) {
@@ -50,14 +50,16 @@ import { ObjectId } from "mongodb";
                 const bookingObjID = new ObjectId(bookingId);
 
                 try {
-                    const booking = await bookingRepository.findOne({ where: { bookingId: bookingObjID } });
-                
-                    if (booking && booking.trailer) {
-                        booking.trailer.status = status;
+                    const booking = await bookingRepository.findOne({ where: { _id: bookingObjID } });
+                    console.log("booking");
+                    console.log(booking);
+                    
+                    if (!booking) {
+                        console.error("Booking not found"); // eslint-disable-line no-console
+                    } else {
+                        booking.status = status;
                         await bookingRepository.save(booking);
                         res.json(booking);
-                    } else {
-                        console.error("Booking or trailer not found"); // eslint-disable-line no-console
                     }
                 } catch (error) {
                     console.error("Error updating booking trailer status:", error); // eslint-disable-line no-console
@@ -65,19 +67,19 @@ import { ObjectId } from "mongodb";
 
             });
 
-            app.put('/trailer/:id', async (req: Request, res: Response) => {
-                try {
-                    const {id} = req.params;
-                    const updatedTrailer = req.body;
-                    console.log("Preupdate:", updatedTrailer);
+            // app.put('/trailer/:id', async (req: Request, res: Response) => {
+            //     try {
+            //         const {id} = req.params;
+            //         const updatedTrailer = req.body;
+            //         console.log("Preupdate:", updatedTrailer);
     
-                    const task = await updateTrailer(id, updatedTrailer);
-                    res.json(task);
-                } catch (error) {
-                    console.error('Error updating task:', error);
-                    res.status(500).json({error: 'An error occurred while updating task'});
-                }
-            });   
+            //         const task = await updateTrailer(id, updatedTrailer);
+            //         res.json(task);
+            //     } catch (error) {
+            //         console.error('Error updating task:', error);
+            //         res.status(500).json({error: 'An error occurred while updating task'});
+            //     }
+            // });   
 
         if (process.env.Node_ENV !== "test") {
             app.listen(port, () => {

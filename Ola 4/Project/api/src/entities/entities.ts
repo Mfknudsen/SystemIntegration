@@ -1,7 +1,11 @@
-import { Entity, ObjectId, ObjectIdColumn, Column } from 'typeorm';
+import { Entity, ObjectId, ObjectIdColumn, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class OtherInfo {
+
+  @PrimaryColumn()
+  id!: number;
+
   @Column()
   size!: string;
 
@@ -16,9 +20,6 @@ export class Trailer {
 
   @Column()
   locationId!: string;
-
-  @Column()
-  status!: string;
 
   @Column(() => OtherInfo)
   otherInfo!: OtherInfo;
@@ -60,14 +61,17 @@ export class Booking {
   @ObjectIdColumn()
   bookingId!: ObjectId;
 
-  @Column(() => Trailer)
-  trailer!: Trailer;
+  @Column()
+  trailerId!: string;
 
   @Column()
   startTime!: Date;
 
   @Column()
   endTime!: Date;
+
+  @Column()
+  status!: string;
 
   @Column(() => Insurance)
   insurance!: Insurance | null;
