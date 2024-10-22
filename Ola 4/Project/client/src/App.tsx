@@ -136,8 +136,12 @@ const App = () => {
                     <tbody>
                     {booking?.map((booking) => (
                         <tr key={booking.bookingId}>
-                            <td className="table-cell">{booking.startTime.toDateString()}</td>
-                            <td className="table-cell">{booking.endTime.toDateString()}</td>
+                            <td className="table-cell">
+                                {booking.startTime ? new Date(booking.startTime).toDateString() : 'No start time'}
+                            </td>
+                            <td className="table-cell">
+                                {booking.startTime ? new Date(booking.endTime).toDateString() : 'No start time'}
+                            </td>
                             <td className="table-cell">{booking.insurance?.fee || "-"}</td>
                             <td className="table-cell">
 
@@ -156,19 +160,19 @@ const App = () => {
                             <td className="table-cell">
                   <span
                       role="img"
-                      aria-label={booking.trailer.status}
+                      aria-label={booking.trailer?.status}
                       style={{
                           fontSize: "30px",
                           cursor: "pointer",
                       }}
                       onClick={() => handleCompleteBooking(booking.bookingId)}
                   >
-  {booking.trailer.status === "completed" ? "✅" : "❌"}
+  {booking.trailer?.status === "completed" ? "✅" : "❌"}
 </span>
 
                             </td>
                             <td className="table-cell">
-                                {booking.trailer.status === "completed" ? (
+                                {booking.trailer?.status === "completed" ? (
                                     <button onClick={() => initializePayment(booking.lateFee, customer.customerId)}>Pay</button>
                                 ) : (
                                     "❌"
