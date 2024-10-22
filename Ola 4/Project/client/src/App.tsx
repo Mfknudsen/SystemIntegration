@@ -5,36 +5,11 @@ import "./App.css";
 import {HandleLogin} from "./UserAuthService/UserAdapter";
 import {StripeAdapter} from "./utils/StripeAdapter";
 import BookTrailer from "./BookingService/bookTrailer";
-import { getAllBookingsAPI } from "./api/tasks";
+import { editBookingPI, getAllBookingsAPI } from "./api/tasks";
 
 
 const App = () => {
-    const [booking, setBooking] = useState<Booking[]>([
-        {
-            bookingId: "1",
-            endTime: new Date(),
-            insurance: null,
-            lateFee: 400,
-            startTime: new Date(),
-            trailer: {trailerId: "1", locationId: "1", otherInfo: {size: "big", type: "black"}, status: "collected"}
-        },
-        {
-            bookingId: "2",
-            endTime: new Date(),
-            insurance: null,
-            lateFee: 2000,
-            startTime: new Date(),
-            trailer: {trailerId: "2", locationId: "1", otherInfo: {size: "big", type: "black"}, status: "Not collected"}
-        },
-        {
-            bookingId: "3",
-            endTime: new Date(),
-            insurance: null,
-            lateFee: 100,
-            startTime: new Date(),
-            trailer: {trailerId: "3", locationId: "1", otherInfo: {size: "big", type: "black"}, status: "returned"}
-        }
-    ]);
+    const [booking, setBooking] = useState<Booking[]>([]);
     const [customer, setCustomer] = useState<Customer>({
         customerId: "-1",
         name: "",
@@ -44,9 +19,12 @@ const App = () => {
     });
 
     const stripeAdapter = new StripeAdapter("key");
-    const initializePayment = async (price: number, customerId: string) => {
+    const initializePayment = async (price: number, customerId: string, booking: Booking) => {
         const paymentMethod = await stripeAdapter.addTestCard(customer,setCustomer);
-        await stripeAdapter.pay(price, "usd", paymentMethod.id, customer.customerId);
+        if(price) {
+            await stripeAdapter.pay(price, "usd", paymentMethod.id, customer.customerId);
+        }
+        editBookingPI(booking)
     };
 
     async function handleCompleteBooking(id: string | undefined): Promise<void> {
@@ -58,10 +36,7 @@ const App = () => {
                     booking.bookingId === id
                         ? {
                             ...booking,
-                            trailer: {
-                                ...booking.trailer,
-                                status: "completed" // Set trailer status to complete
-                            }
+                            status: 'done'
                         }
                         : booking
                 )
@@ -160,20 +135,20 @@ const App = () => {
                             <td className="table-cell">
                   <span
                       role="img"
-                      aria-label={booking.trailer?.status}
+                      aria-label={booking?.status}
                       style={{
                           fontSize: "30px",
                           cursor: "pointer",
                       }}
                       onClick={() => handleCompleteBooking(booking.bookingId)}
                   >
-  {booking.trailer?.status === "completed" ? "✅" : "❌"}
+  {booking?.status === "done" ? "✅" : "❌"}
 </span>
 
                             </td>
                             <td className="table-cell">
-                                {booking.trailer?.status === "completed" ? (
-                                    <button onClick={() => initializePayment(booking.lateFee, customer.customerId)}>Pay</button>
+                                {booking?.status === "done" ? (
+                                    <button onClick={() => initializePayment(booking.lateFee, customer.customerId, booking)}>Pay</button>
                                 ) : (
                                     "❌"
                                 )}

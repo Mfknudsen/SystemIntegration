@@ -35,7 +35,7 @@ export const addBookingAPI = async (booking: BookTrailerForm): Promise<Booking> 
 };
 
 export const editBookingPI = async (booking: Booking): Promise<Booking> => {
-  const response = await fetch(`${baseUrl}/bookings}`, {
+  const response = await fetch(`${baseUrl}/bookings`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(booking),

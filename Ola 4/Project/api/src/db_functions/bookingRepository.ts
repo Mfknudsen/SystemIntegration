@@ -25,7 +25,6 @@ async function createBooking(
 
 async function getAllBookings() {
   const bookings = await bookingRepository.find();
-  console.log("Found bookings:", bookings); // eslint-disable-line no-console
   return bookings;
 }
 

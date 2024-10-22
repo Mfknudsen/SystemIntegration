@@ -19,7 +19,7 @@ export type Booking = {
   endTime: Date;
   insurance: Insurance | null;
   lateFee: number;
-
+  status: string;
 };
 
 export type BookTrailerForm = {
