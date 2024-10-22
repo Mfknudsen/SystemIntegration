@@ -4,6 +4,7 @@ import "./App.css";
 
 import {HandleLogin} from "./UserAuthService/UserAdapter";
 import {StripeAdapter} from "./utils/StripeAdapter";
+import BookTrailer from "./BookingService/bookTrailer";
 
 
 const App = () => {
@@ -84,7 +85,7 @@ const App = () => {
                 <div className="login">
                     {HandleLogin(setCustomer)}
                 </div>
-
+                <div style={{display:'flex'}}>
                 <div style={{
                     border: '1px solid #ccc',
                     padding: '20px',
@@ -104,6 +105,10 @@ const App = () => {
                     <p><strong>Payment ID:</strong> {customer.paymentDetails.paymentId}</p>
                     <p><strong>Payment Method:</strong> {customer.paymentDetails.paymentMethod}</p>
                     <p><strong>Card Number:</strong> {customer.paymentDetails.cardNumber}</p>
+                </div>
+                <div style={{padding:20}}>
+                <BookTrailer/>
+                </div>
                 </div>
                 <table className="table-content">
                     <thead>
