@@ -29,19 +29,4 @@ async function getAllBookings() {
   return bookings;
 }
 
-// async function updateTrailer(id: string | undefined, _trailer: Trailer) {
-//   const objectId = new ObjectId(id);
-//   const trailer = await trailerRepository.findOne({where: {_id: objectId}});
-//   if (!trailer) {
-//       throw new Error('Booking not found');
-//   } else {
-//     trailer.otherInfo = _trailer.otherInfo;
-//       trailer.status = _trailer.status;
-//       trailer.locationId = _trailer.locationId;
-//       await trailerRepository.save(trailer);
-//       console.log("trailer has been updated:", trailer);
-//       return trailer;
-//   }
-// }
-
 export {createBooking, getAllBookings, bookingRepository};

@@ -67,20 +67,6 @@ import { ObjectId } from "mongodb";
 
             });
 
-            // app.put('/trailer/:id', async (req: Request, res: Response) => {
-            //     try {
-            //         const {id} = req.params;
-            //         const updatedTrailer = req.body;
-            //         console.log("Preupdate:", updatedTrailer);
-    
-            //         const task = await updateTrailer(id, updatedTrailer);
-            //         res.json(task);
-            //     } catch (error) {
-            //         console.error('Error updating task:', error);
-            //         res.status(500).json({error: 'An error occurred while updating task'});
-            //     }
-            // });   
-
         if (process.env.Node_ENV !== "test") {
             app.listen(port, () => {
                 console.log(`Server is running at http://localhost:${port}`); // eslint-disable-line no-console
