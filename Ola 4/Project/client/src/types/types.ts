@@ -22,6 +22,11 @@ export type Booking = {
 
 };
 
+export type BookTrailerForm = {
+  trailerId: string;
+  insurance: boolean;
+}
+
 export type Insurance = {
   insuranceId: string;
   fee: number;

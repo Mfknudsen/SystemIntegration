@@ -5,6 +5,7 @@ import "./App.css";
 import {HandleLogin} from "./UserAuthService/UserAdapter";
 import {StripeAdapter} from "./utils/StripeAdapter";
 import BookTrailer from "./BookingService/bookTrailer";
+import { getAllBookingsAPI } from "./api/tasks";
 
 
 const App = () => {
@@ -74,8 +75,19 @@ const App = () => {
 
     console.log("customer", customer);
 
+    const fetchData = async () => {
+        try {
+          const bookings = await getAllBookingsAPI();
+          console.log("bookings:", bookings);
+          setBooking(bookings);
+        } catch (error) {
+          console.error("Error fetching bookings:", error);
+        }
+      };
+    
+
     useEffect(() => {
-        // fetchData();
+        fetchData();
     }, []);
 
 
@@ -107,7 +119,7 @@ const App = () => {
                     <p><strong>Card Number:</strong> {customer.paymentDetails.cardNumber}</p>
                 </div>
                 <div style={{padding:20}}>
-                <BookTrailer/>
+                <BookTrailer />
                 </div>
                 </div>
                 <table className="table-content">
